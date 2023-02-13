@@ -1,0 +1,24 @@
+### Global Values if any ###
+global: {}
+
+### Sub Charts Specific Values ###
+db:
+  enabled: true
+backend:
+#  enabled: true
+  enabled: false
+frontend:
+#  enabled: true
+  enabled: false
+gateway:
+#  enabled: true
+  enabled: false
+worker:
+#  enabled: true
+  enabled: false
+rabbitmq:
+#  enabled: true
+  enabled: false
+restapi:
+#  enabled: true
+  enabled: false

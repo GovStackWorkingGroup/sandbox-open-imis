@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: open-imis
+spec:
+  selector:
+    matchLabels:
+      run: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: backend
+    spec:
+      containers:
+        - name: backend
+          image: https://github.com/openimis/openimis-be_py.git#${main:-develop}
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+            - containerPort: 4000
+            - containerPort: 5500
+            - containerPort: 5577
+            - containerPort: 5588
