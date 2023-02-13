@@ -1,1 +1,1 @@
-# bb-open-imis
+# sandbox-open-imis
