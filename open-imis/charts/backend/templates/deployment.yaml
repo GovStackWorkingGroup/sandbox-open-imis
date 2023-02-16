@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: open-imis
+spec:
+  selector:
+    matchLabels:
+      run: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: backend
+    spec:
+      containers:
+#        - env:
+#            - name: DB_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: open-imis-secret
+#                  key: password
+#            - name: DB_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: open-imis-secret
+#                  key: password
+        - name: backend
+          image: arunpmohanandocker/openimis-be-2.3.4
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
