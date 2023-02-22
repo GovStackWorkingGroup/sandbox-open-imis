@@ -1,0 +1,18 @@
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+metadata:
+  name: open-imis-db
+  namespace: open-imis
+spec:
+  dbInstanceIdentifier: open-imis-db
+#  dbName: "oleksii-db"
+  engine: postgres
+  masterUsername: "postgres"
+  masterUserPassword:
+    namespace: open-imis
+    name: "open-imis-secret"
+    key: password
+  dbSubnetGroupName: default
+  dbInstanceClass: db.t4g.micro
+  allocatedStorage: 20
+  deletionProtection: false
