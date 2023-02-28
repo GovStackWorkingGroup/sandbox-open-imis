@@ -4,10 +4,10 @@ metadata:
   name: open-imis-db
   namespace: open-imis
 spec:
+  dbSnapshotIdentifier: "arn:aws:rds:eu-central-1:463471358064:snapshot:open-imis-snapshot"
   dbInstanceIdentifier: open-imis-db
-#  dbName: "oleksii-db"
   engine: postgres
-  masterUsername: "postgres"
+  masterUsername: "IMISuser"
   masterUserPassword:
     namespace: open-imis
     name: "open-imis-secret"
