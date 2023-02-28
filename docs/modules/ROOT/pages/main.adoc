@@ -1,0 +1,21 @@
+= Open-imis
+
+== DB
+
+Backend expect predefined schema and necessary info to run.
+
+https://github.com/openimis/database_postgresql/tree/2b106828fe6f76fadd8a61f6722abd71a9f94789/database%20scripts[SQL scripts] are responsible to provide necessary db state.
+
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html[DB snapshot] is using to get DB with necessary state.
+
+Example of configuration:
+
+[source, yaml]
+----
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+spec:
+  dbSnapshotIdentifier: "arn:aws:rds:eu-central-1:463471358064:snapshot:test-2-open-imis-db-snapshot"
+  dbInstanceIdentifier: open-imis-db
+  engine: postgres
+----
