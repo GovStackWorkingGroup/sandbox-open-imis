@@ -1,0 +1,10 @@
+### Global Values if any ###
+global: {}
+
+### Sub Charts Specific Values ###
+db:
+  enabled: true
+backend:
+  enabled: true
+gateway:
+  enabled: true

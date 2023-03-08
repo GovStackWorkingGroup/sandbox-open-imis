@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-imis-gateway
+  namespace: open-imis
+spec:
+  selector:
+    matchLabels:
+      run: open-imis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: open-imis
+    spec:
+      containers:
+        - name: open-imis-gateway
+          image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-gateway:latest
+          imagePullPolicy: "Always"

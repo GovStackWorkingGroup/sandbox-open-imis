@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-imis-gateway
+  labels:
+    run: open-imis-gateway
+  namespace: open-imis
+spec:
+  type: LoadBalancer
+  selector:
+    run: open-imis-gateway
+  ports:
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: config
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
