@@ -1,0 +1,120 @@
+= Notes
+
+== Expose public access
+
+ kubectl expose deployment open-imis-gateway --type=LoadBalancer --name=my-service
+
+ a45a60e62e44b4e239c1381faf6a0216-727219181.eu-central-1.elb.amazonaws.com
+
+ 443:31394/TCP
+ 80:31355/TCP
+
+
+== Creating a load balancer
+
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-load-balancer.html
+
+== helm commands
+
+ helm upgrade --install sandbox-open-imis ./sandbox-open-imis/
+
+== k8s commands
+
+ kubectl get secret open-imis-secret -n open-imis -o jsonpath='{.data.password}' | base64 --decode
+
+ echo -n 'helloWorld32' | base64
+
+== set db name
+
+ NewDBInstanceIdentifier
+
+== push image
+
+ docker push aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
+
+ aws ecr get-login-password --region eu-central-1
+
+ aws configure
+
+ AKIA5ZPTTYWFDD45MB6X
+
+ aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 463471358064.dkr.ecr.eu-central-1.amazonaws.com
+
+
+463471358064.dkr.ecr.eu-central-1.amazonaws.com/dev-open-imis
+
+ docker tag backend-off:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/backend-off:latest
+
+ docker tag dev-open-imis-db:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/dev-open-imis-db:latest
+
+ docker tag openimis/backend:demo 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-backend:latest
+
+ docker tag from-sources:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-backend:latest
+
+ docker tag openimis-dist_dkr_gateway:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-gateway:latest
+
+ docker push 463471358064.dkr.ecr.eu-central-1.amazonaws.com/openimis-dist_dkr_restapi:latest
+
+ docker push 463471358064.dkr.ecr.eu-central-1.amazonaws.com/dev-open-imis-db:latest
+
+ docker pull 463471358064.dkr.ecr.eu-central-1.amazonaws.com/govstackecr:latest
+
+ aws ecr get-login-password --region eu-central-1 --profile sandbox-dev | docker login ....
+
+=== test build
+
+ docker tag openimis-dist_dkr_restapi:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/openimis-dist_dkr_restapi:latest
+
+ docker push 463471358064.dkr.ecr.eu-central-1.amazonaws.com/dev-open-imis:latest
+
+openimis-dist_dkr_restapi
+
+ docker tag 463471358064.dkr.ecr.eu-central-1.amazonaws.com/openimis-dist_dkr_restapi:latest 463471358064.dkr.ecr.eu-central-1.amazonaws.com/dev-open-imis:latest
+
+== rds from docker images
+
+Backend expect postgres db with configured schema plus profiled data.
+To get db with necessary data I run sql scripts.
+Now I want to AWS RDS provide such DB.
+I created handy Docker image and saved in ECR for that
+
+How to configure RDS manifest to up and run db from custom docker image?
+
+== create images
+
+ docker build -t openimis:first .
+
+ docker run openimis:0.1. .
+
+ docker build -t dev-open-imis .
+
+=== Images for backend
+
+== Learning
+
+ helm status open-imis
+
+=== I don't know how to set namespace in helm
+
+----
+oleksii_danyliuk@G600108:~/Desktop/sandbox-open-imis$ helm status open-imis
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/oleksii_danyliuk/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/oleksii_danyliuk/.kube/config
+NAME: open-imis
+LAST DEPLOYED: Thu Feb 16 10:29:45 2023
+
+NAMESPACE: default
+
+STATUS: deployed
+REVISION: 5
+TEST SUITE: None
+----
+
+==== Do I need to do it?
+https://github.com/helm/helm/issues/2060
+
+== register image
+
+ docker push harbor.codemowers.eu/oleksii/backend-off:latest
+
+ docker push harbor.k-space.ee/oleksii/REPOSITORY[:TAG]
