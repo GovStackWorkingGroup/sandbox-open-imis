@@ -2,7 +2,6 @@
 
 == DB
 
-
 Backend expect predefined schema and necessary info to run.
 
 https://github.com/openimis/database_postgresql/tree/2b106828fe6f76fadd8a61f6722abd71a9f94789/database%20scripts[SQL scripts] are responsible to provide necessary db state.
@@ -23,3 +22,41 @@ spec:
 
 == Back-end
 
+=== Happy path steps
+
+1. Get User from MOSIP via X-Road
+2. Create family record
+
+
+----
+POST
+	https://localhost/api/graphql
+
+'\n mutation {\n createFamily(\n input: {\n clientMutationId: "7c68adae-5892-4389-8ac3-b30ce5b06c34"\n clientMutationLabel: "Create family - Last name Given names (777777777777)"\n \n headInsuree: {\n \n chfId: "777777777777"\n lastName: "Last name"\n otherNames: "Given names "\n genderId: "M"\n dob: "1980-03-01"\n head: true\n marital: "S"\n \n \n \n \n \n \n cardIssued:false\n \n \n \n \n \n \n \n }\n locationId: 35\n poverty: false\n familyTypeId: "C"\n \n confirmationTypeId: "A"\n confirmationNo: "77777777777"\n jsonExt: "{}"\n }\n ) {\n clientMutationId\n internalId\n }\n }'
+----
+
+[source, json]
+----
+{createFamily(input:
+{\n clientMutationId: "7c68adae-5892-4389-8ac3-b30ce5b06c34",
+clientMutationLabel: "Create family - Last name Given names (777777777777)"\n \n headInsuree: {\n \n chfId: "777777777777"\n lastName: "Last name"\n otherNames: "Given names "\n genderId: "M"\n dob: "1980-03-01"\n head: true\n marital: "S"\n \n \n \n \n \n \n cardIssued:false\n \n \n \n \n \n \n \n }\n locationId: 35\n poverty: false\n familyTypeId: "C"\n \n confirmationTypeId: "A"\n confirmationNo: "77777777777"\n jsonExt: "{}"\n }\n ) {\n clientMutationId\n internalId\n }\n }'
+
+----
+
+[source, json]
+----
+query authenticate($username: String!, $password: String!) {
+    tokenAuth(
+        username: $username,
+        password: $password) {
+            refreshExpiresIn            }
+          }
+----
+
+==== add policy
+
+----
+    mutation {      createPolicy(        input: {          clientMutationId: "90dca55e-538f-4c29-9b40-b7582157b6e8"          clientMutationLabel: "Create Policy Last name Given names  (777777777777) - 2023-06-01 : 2024-05-31"                    enrollDate: "2023-03-01"  startDate: "2023-06-01"  expiryDate: "2024-05-31"  value: "6000.00"  productId: 10  familyId: 31  officerId: 6        }      ) {        clientMutationId        internalId      }    }
+----
+
+==== Create invoice/payment
