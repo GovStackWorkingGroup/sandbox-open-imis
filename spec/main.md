@@ -19,6 +19,12 @@ Predefined DB [backup](https://github.com/GovStackWorkingGroup/sandbox-open-imis
 
 Backend expect communication via Gateway component.
 
+### API
+
+OpenIMIS uses [FHIR](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard.
+
+Consider using an [adapter](https://github.com/GovStackWorkingGroup/specifications/blob/b86b16b85d2e1260d6c7005c49fb76787dc7a7a6/architecture-and-nonfunctional-requirements/6-onboarding.md#61-adapters) for compatibility.
+
 ## [Gateway](https://github.com/openimis/openimis-gateway_dkr.git) 
 
 ## Docker images
