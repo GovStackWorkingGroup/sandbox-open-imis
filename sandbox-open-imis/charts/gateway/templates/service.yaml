@@ -6,7 +6,7 @@ metadata:
     run: open-imis-gateway
   namespace: open-imis
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     run: open-imis-gateway
   ports:

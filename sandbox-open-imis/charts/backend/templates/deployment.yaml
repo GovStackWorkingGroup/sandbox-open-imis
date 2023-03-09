@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: open-imis-backned
-  namespace: open-imis
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.deployment.namespace }}
 spec:
   selector:
     matchLabels:
-      run: open-imis
+      run: {{ .Values.deployment.spec.name }}
   replicas: 1
   template:
     metadata:
       labels:
-        run: open-imis
+        run: {{ .Values.deployment.spec.name }}
     spec:
       containers:
-        - name: open-imis-backend
-          image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-backend:latest
-          imagePullPolicy: "Always"
+        - name: {{ .Values.deployment.containers.name }}
+          image: {{ .Values.deployment.containers.image }}
+          imagePullPolicy: {{ .Values.deployment.containers.imagePullPolicy }}
