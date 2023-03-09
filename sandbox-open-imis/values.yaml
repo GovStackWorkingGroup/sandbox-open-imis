@@ -1,6 +1,3 @@
-### Global Values if any ###
-global: {}
-
 ### Sub Charts Specific Values ###
 db:
   enabled: true
