@@ -29,4 +29,4 @@ Consider using an [adapter](https://github.com/GovStackWorkingGroup/specificatio
 
 ## Docker images
 
-Docker images are organized base on [infra repository](https://github.com/GovStackWorkingGroup/sandbox-infra).
+Docker images are organized based on [infra repository](https://github.com/GovStackWorkingGroup/sandbox-infra).
