@@ -1,0 +1,18 @@
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+metadata:
+  name: {{ .Values.db.name }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  dbSnapshotIdentifier: {{ .Values.db.spec.dbSnapshotIdentifier }}
+  dbInstanceIdentifier: {{ .Values.db.name }}
+  engine: postgres
+  masterUsername: {{ .Values.db.spec.masterUsername }}
+  masterUserPassword:
+    namespace: {{ .Values.global.namespace }}
+    name: {{ .Values.secret.name }}
+    key: password
+  dbSubnetGroupName: default
+  dbInstanceClass: db.t4g.micro
+  allocatedStorage: 20
+  deletionProtection: false

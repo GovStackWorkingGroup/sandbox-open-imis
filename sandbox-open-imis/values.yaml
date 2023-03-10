@@ -1,0 +1,11 @@
+### Global Values if any ###
+global:
+  namespace: open-imis
+
+### Sub Charts Specific Values ###
+db:
+  enabled: true
+backend:
+  enabled: true
+gateway:
+  enabled: true
