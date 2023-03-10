@@ -30,3 +30,7 @@ Consider using an [adapter](https://github.com/GovStackWorkingGroup/specificatio
 ## Docker images
 
 Docker images are organized based on [infra repository](https://github.com/GovStackWorkingGroup/sandbox-infra).
+
+## Useful commands
+
+`helm install --debug --dry-run sandbox-open-imis ./sandbox-open-imis/`

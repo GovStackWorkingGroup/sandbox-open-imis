@@ -1,0 +1,8 @@
+db:
+  name: open-imis-db
+  spec:
+    dbSnapshotIdentifier: arn:aws:rds:eu-central-1:463471358064:snapshot:open-imis-snapshot
+    masterUsername: IMISuser
+
+secret:
+  name: open-imis-secret
