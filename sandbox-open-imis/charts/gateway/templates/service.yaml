@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: open-imis-gateway
+  name: {{ .Values.service.name }}
   labels:
-    run: open-imis-gateway
-  namespace: open-imis
+    run: {{ .Values.service.name }}
+  namespace: {{ .Values.global.namespace }}
 spec:
   type: ClusterIP
   selector:
-    run: open-imis-gateway
+    run: {{ .Values.service.name }}
   ports:
     - port: 443
       targetPort: 443

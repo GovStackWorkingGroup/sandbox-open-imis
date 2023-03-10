@@ -1,9 +1,8 @@
 deployment:
-  name: open-imis-gateway
-  namespace: open-imis
+  name: open-imis-backend
   spec:
     name: open-imis
   containers:
-    name: open-imis-gateway
+    name: open-imis-backend
     image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-backend:latest
     imagePullPolicy: "Always"

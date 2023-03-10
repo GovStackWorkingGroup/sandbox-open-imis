@@ -2,14 +2,14 @@ apiVersion: rds.services.k8s.aws/v1alpha1
 kind: DBInstance
 metadata:
   name: open-imis-db
-  namespace: open-imis
+  namespace: {{ .Values.global.namespace }}
 spec:
   dbSnapshotIdentifier: "arn:aws:rds:eu-central-1:463471358064:snapshot:open-imis-snapshot"
   dbInstanceIdentifier: open-imis-db
   engine: postgres
   masterUsername: "IMISuser"
   masterUserPassword:
-    namespace: open-imis
+    namespace: {{ .Values.global.namespace }}
     name: "open-imis-secret"
     key: password
   dbSubnetGroupName: default
